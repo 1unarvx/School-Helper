@@ -57,14 +57,6 @@
       const data = {
         "games": [
           {
-            "id": "minecraft",
-            "title": "Minecraft",
-            "description": "The classic block-building sandbox game.",
-            "url": "https://menufiyatlarim.net/77.html",
-            "category": "Sandbox",
-            "thumbnail": "https://picsum.photos/seed/minecraft/400/300"
-          },
-          {
             "id": "minecraft-eagler",
             "title": "Minecraft (Eaglercraft)",
             "description": "A high-performance web version of Minecraft 1.8.8.",
@@ -265,8 +257,8 @@
                       src="${state.selectedItem.url}"
                       class="w-full h-full border-none"
                       title="${state.selectedItem.title}"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox allow-downloads allow-storage-access-by-user-activation"
+                      allow="accelerometer *; ambient-light-sensor *; autoplay *; camera *; clipboard-read *; clipboard-write *; encrypted-media *; fullscreen *; geolocation *; gyroscope *; local-network-access *; magnetometer *; microphone *; midi *; payment *; picture-in-picture *; screen-wake-lock *; speaker *; sync-xhr *; usb *; vibrate *; vr *; web-share *"
+                      sandbox="allow-downloads allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-storage-access-by-user-activation"
                       allowfullscreen
                     ></iframe>
                   </div>
