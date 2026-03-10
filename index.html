@@ -4,10 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Unblocked Games Hub</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <!-- Tailwind CSS CDN (Stable v3) -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      // Configure Tailwind
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              emerald: {
+                500: '#10b981',
+              }
+            }
+          }
+        }
+      }
+    </script>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
       body { 
@@ -21,34 +35,27 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #18181b;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #3f3f46;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #52525b;
-      }
     </style>
   </head>
   <body class="selection:bg-emerald-500/30">
     <div id="app">
       <!-- Initial Loading State -->
-      <div class="min-h-screen flex items-center justify-center">
+      <div id="loading-screen" class="min-h-screen flex items-center justify-center">
         <div class="flex flex-col items-center gap-4">
           <div class="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin"></div>
           <p class="text-zinc-500 font-medium animate-pulse">Loading Hub...</p>
+          <p id="js-status" class="text-[10px] text-zinc-700 uppercase tracking-widest">Waiting for JavaScript...</p>
+          <noscript>
+            <p class="text-red-500">JavaScript is required to run this app.</p>
+          </noscript>
         </div>
       </div>
     </div>
 
     <script>
+      console.log("App script starting...");
+      document.getElementById('js-status').textContent = "JavaScript Initialized";
+      
       // Embedded Data to ensure zero pathing issues
       const data = {
         "games": [
@@ -107,7 +114,13 @@
 
       // Core Render Function
       function render() {
+        console.log("Rendering app...");
         const app = document.getElementById('app');
+        if (!app) {
+          console.error("Root element #app not found!");
+          return;
+        }
+        
         const filteredItems = (state.activeTab === 'games' ? data.games : data.proxies).filter(item => 
           item.title.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
           item.category.toLowerCase().includes(state.searchQuery.toLowerCase())
@@ -363,10 +376,14 @@
         }
       }
 
-      // Start the app when window loads
-      window.onload = () => {
+      // Start the app
+      try {
+        console.log("Initializing app...");
         render();
-      };
+      } catch (e) {
+        console.error("App initialization failed:", e);
+        document.body.innerHTML = `<div style="color: white; padding: 20px;">Error: ${e.message}</div>`;
+      }
     </script>
   </body>
 </html>
