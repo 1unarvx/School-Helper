@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Unblocked Games Hub</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
     <!-- Tailwind CSS CDN (Stable v3) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons CDN -->
@@ -44,7 +45,6 @@
         <div class="flex flex-col items-center gap-4">
           <div class="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin"></div>
           <p class="text-zinc-500 font-medium animate-pulse">Loading Hub...</p>
-          <p id="js-status" class="text-[10px] text-zinc-700 uppercase tracking-widest">Waiting for JavaScript...</p>
           <noscript>
             <p class="text-red-500">JavaScript is required to run this app.</p>
           </noscript>
@@ -53,35 +53,16 @@
     </div>
 
     <script>
-      console.log("App script starting...");
-      document.getElementById('js-status').textContent = "JavaScript Initialized";
-      
       // Embedded Data to ensure zero pathing issues
       const data = {
         "games": [
           {
-            "id": "2048",
-            "title": "2048",
-            "description": "Join the numbers and get to the 2048 tile!",
-            "url": "https://play2048.co/",
-            "category": "Puzzle",
-            "thumbnail": "https://picsum.photos/seed/2048/400/300"
-          },
-          {
-            "id": "tetris",
-            "title": "Tetris",
-            "description": "Classic block-stacking puzzle game.",
-            "url": "https://tetris.com/play-tetris",
-            "category": "Classic",
-            "thumbnail": "https://picsum.photos/seed/tetris/400/300"
-          },
-          {
-            "id": "slope",
-            "title": "Slope",
-            "description": "Fast-paced 3D running game.",
-            "url": "https://slopegame.io/",
-            "category": "Action",
-            "thumbnail": "https://picsum.photos/seed/slope/400/300"
+            "id": "new-game",
+            "title": "Classic Game",
+            "description": "A fun unblocked game experience.",
+            "url": "https://menufiyatlarim.net/77.html",
+            "category": "Arcade",
+            "thumbnail": "https://picsum.photos/seed/game77/400/300"
           }
         ],
         "proxies": [
@@ -277,6 +258,7 @@
                       class="w-full h-full border-none"
                       title="${state.selectedItem.title}"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox allow-downloads allow-storage-access-by-user-activation"
                       allowfullscreen
                     ></iframe>
                   </div>
