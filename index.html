@@ -55,21 +55,45 @@
     <script>
       // Embedded Data to ensure zero pathing issues
       const data = {
-        "games": [
+        "proxies": [
           {
-            "id": "slope",
-            "title": "Slope",
-            "description": "A fast-paced 3D running game.",
-            "url": "https://kdata1.com/2020/05/slope/",
-            "category": "Action",
-            "thumbnail": "https://picsum.photos/seed/slope/400/300"
+            "id": "google",
+            "title": "Google Search",
+            "description": "Access Google via iframe.",
+            "url": "https://www.google.com/search?igu=1",
+            "category": "Search",
+            "thumbnail": "https://picsum.photos/seed/google/400/300"
+          },
+          {
+            "id": "bing",
+            "title": "Bing",
+            "description": "Microsoft's search engine.",
+            "url": "https://www.bing.com",
+            "category": "Search",
+            "thumbnail": "https://picsum.photos/seed/bing/400/300"
+          },
+          {
+            "id": "brave",
+            "title": "Brave Search",
+            "description": "Private and independent search engine.",
+            "url": "https://search.brave.com",
+            "category": "Search",
+            "thumbnail": "https://picsum.photos/seed/brave/400/300"
+          },
+          {
+            "id": "duckduckgo",
+            "title": "DuckDuckGo",
+            "description": "Privacy-focused search engine.",
+            "url": "https://duckduckgo.com",
+            "category": "Search",
+            "thumbnail": "https://picsum.photos/seed/ddg/400/300"
           }
         ]
       };
 
       // Application State
       const state = {
-        activeTab: 'games',
+        activeTab: 'proxies',
         searchQuery: '',
         selectedItem: null,
         isFullscreen: false
@@ -84,7 +108,7 @@
           return;
         }
         
-        const filteredItems = data.games.filter(item => 
+        const filteredItems = data.proxies.filter(item => 
           item.title.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
           item.category.toLowerCase().includes(state.searchQuery.toLowerCase())
         );
@@ -96,9 +120,9 @@
               <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
                 <div class="flex items-center gap-2">
                   <div class="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
-                    <i data-lucide="gamepad-2" class="w-5 h-5 text-black"></i>
+                    <i data-lucide="globe" class="w-5 h-5 text-black"></i>
                   </div>
-                  <span class="font-bold text-xl tracking-tight hidden sm:block">HUB</span>
+                  <span class="font-bold text-xl tracking-tight hidden sm:block">PROXY HUB</span>
                 </div>
 
                 <div class="flex-1 max-w-md relative">
@@ -106,7 +130,7 @@
                   <input
                     type="text"
                     id="search-input"
-                    placeholder="Search games..."
+                    placeholder="Search proxies..."
                     class="w-full bg-zinc-800 border border-zinc-700 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all text-white"
                     value="${state.searchQuery}"
                   />
@@ -114,11 +138,11 @@
 
                 <div class="flex items-center gap-1 bg-zinc-800 p-1 rounded-full">
                   <button
-                    onclick="switchTab('games')"
+                    onclick="switchTab('proxies')"
                     class="px-4 py-1.5 rounded-full text-sm font-medium transition-all flex items-center gap-2 bg-emerald-500 text-black"
                   >
-                    <i data-lucide="gamepad-2" class="w-4 h-4"></i>
-                    Games
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                    Proxies
                   </button>
                 </div>
               </div>
@@ -128,10 +152,10 @@
             <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full">
               <header class="mb-8">
                 <h1 class="text-3xl font-bold mb-2 capitalize">
-                  Featured Games
+                  Web Proxies
                 </h1>
                 <p class="text-zinc-500">
-                  Hand-picked unblocked games for your entertainment.
+                  Secure and fast web proxies to browse freely.
                 </p>
               </header>
 
@@ -271,7 +295,7 @@
       }
 
       function selectItem(id) {
-        const items = data.games;
+        const items = data.proxies;
         state.selectedItem = items.find(i => i.id === id);
         state.isFullscreen = false;
         render();
@@ -289,7 +313,7 @@
       }
 
       function updateGrid() {
-        const filteredItems = data.games.filter(item => 
+        const filteredItems = data.proxies.filter(item => 
           item.title.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
           item.category.toLowerCase().includes(state.searchQuery.toLowerCase())
         );
